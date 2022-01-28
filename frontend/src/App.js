@@ -4,7 +4,7 @@ import Toolbar from './components/Toolbar';
 import MessageArea from './components/MessageArea';
 import './App.css';
 
-const data = {
+/* const data = {
   data: [
     { id: 1, text: 'Task #1', start_date: '2020-02-12', duration: 3, progress: 0.6 },
     { id: 2, text: 'Task #2', start_date: '2020-02-16', duration: 3, progress: 0.4 }
@@ -12,9 +12,9 @@ const data = {
   links: [
     { id: 1, source: 1, target: 2, type: '0' }
   ]
-};
+}; */
 
-/* const myHeaders = new Headers();
+const myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWYxNzlkZGVhMjgzMzUzYTBjMjg0N2YiLCJuYW1lIjoiUmVuYXRvIiwiaWF0IjoxNjQzMjE1Mzc0LCJleHAiOjE2NDU4MDczNzR9.uf78aiPrK3h6fAtT__PW7dQqRBMFq-YtuNPKeFgMaRU");
 
 const requestOptions = {
@@ -25,21 +25,30 @@ const requestOptions = {
 
 
 
-  const data = fetchData();
+  //const data = fetchData();
 
-  async function fetchData(){
+  /* async function fetchData(){
     try {
-      const dataRaw = await fetch("http://localhost:5000/api/v1/tasks", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+      const dataRaw = await fetch("http://localhost:5000/api/v1/tasks", requestOptions);
       return dataRaw;
     } catch (error) {
-      console.log(error);
+      return "erro em data"
     }
   }  */
 
-console.log(data);
+  const data = async () => {
+    const response = await fetch("http://localhost:5000/api/v1/tasks", requestOptions) // get users list
+    const tasks = await response.json() // parse JSON
+    const data = tasks // pick first user
+    //const userResponse = await fetch(`/users/${user.name}`) // get user data
+    //const userData = await userResponse.json() // parse JSON
+    return data
+  }
+  
+  data()
+  
+
+//console.log('data: ' + data);
 
 class App extends Component {
   state = {
