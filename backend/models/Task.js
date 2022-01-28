@@ -3,6 +3,10 @@ const moment = require("moment");
 
 const TaskSchema = new mongoose.Schema(
   {
+    id: {// id
+      type: String,
+      require: true
+    },
     ensaio: {// ensaio
       type: String,
       require: true

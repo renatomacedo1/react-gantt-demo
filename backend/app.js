@@ -43,8 +43,8 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // routes
 app.use('/api/v1/auth', authRouter);
-//app.use('/api/v1/tasks', authenticateUser, tasksRouter);
-app.use('/api/v1/tasks', tasksRouter);
+app.use('/api/v1/tasks', authenticateUser, tasksRouter);
+//app.use('/api/v1/tasks', tasksRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

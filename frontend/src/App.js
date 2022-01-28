@@ -4,7 +4,7 @@ import Toolbar from './components/Toolbar';
 import MessageArea from './components/MessageArea';
 import './App.css';
 
-/* const data = {
+const data = {
   data: [
     { id: 1, text: 'Task #1', start_date: '2020-02-12', duration: 3, progress: 0.6 },
     { id: 2, text: 'Task #2', start_date: '2020-02-16', duration: 3, progress: 0.4 }
@@ -12,25 +12,34 @@ import './App.css';
   links: [
     { id: 1, source: 1, target: 2, type: '0' }
   ]
-}; */
+};
 
-var myHeaders = new Headers();
+/* const myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWYxNzlkZGVhMjgzMzUzYTBjMjg0N2YiLCJuYW1lIjoiUmVuYXRvIiwiaWF0IjoxNjQzMjE1Mzc0LCJleHAiOjE2NDU4MDczNzR9.uf78aiPrK3h6fAtT__PW7dQqRBMFq-YtuNPKeFgMaRU");
 
-var requestOptions = {
+const requestOptions = {
   method: 'GET',
   headers: myHeaders,
   redirect: 'follow'
 };
 
-const dataRaw = fetch("http://localhost:5000/api/v1/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 
 
+  const data = fetchData();
 
-const data = JSON.parse(dataRaw)//Erro no parse
+  async function fetchData(){
+    try {
+      const dataRaw = await fetch("http://localhost:5000/api/v1/tasks", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+      return dataRaw;
+    } catch (error) {
+      console.log(error);
+    }
+  }  */
+
+console.log(data);
 
 class App extends Component {
   state = {
